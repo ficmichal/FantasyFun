@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5A2AE9F7-231F-4089-9DE2-C2B2327C77B3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{03FC932D-8741-4370-989D-DFA17FDAD54E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FantasyFun.API", "src\FantasyFun.API\FantasyFun.API.csproj", "{8A49B9F8-01E7-46CF-BFA8-32477F844B8B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8A49B9F8-01E7-46CF-BFA8-32477F844B8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A49B9F8-01E7-46CF-BFA8-32477F844B8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A49B9F8-01E7-46CF-BFA8-32477F844B8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A49B9F8-01E7-46CF-BFA8-32477F844B8B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8A49B9F8-01E7-46CF-BFA8-32477F844B8B} = {5A2AE9F7-231F-4089-9DE2-C2B2327C77B3}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FD00D1A0-44C3-4081-9C4A-4437DE56D333}
+	EndGlobalSection
+EndGlobal
