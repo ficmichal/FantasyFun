@@ -13,6 +13,7 @@ namespace FantasyFun.API.Repositories
             ConnectionString = Path.Combine(folder, "..", "..", DbPath);
         }
 
-
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
+            => options.UseSqlite($"Data Source={ConnectionString}");
     }
 }
