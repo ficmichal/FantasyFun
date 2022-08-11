@@ -17,13 +17,10 @@ namespace FantasyFun.API.Controllers
 
             var team = await db.Teams
                 .Where(l => l.Id == id)
-                .Select(l => new TeamName
-                {
-                    LongName = l.LongName,
-                    ShortName = l.ShortName
-                }).FirstOrDefaultAsync();
+                .Select(l => new TeamName(l.LongName,l.ShortName))
+                .FirstOrDefaultAsync();
 
-            return anyTeam;
+            return team;
         }
     }
 }

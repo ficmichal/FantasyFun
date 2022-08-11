@@ -53,7 +53,7 @@ namespace FantasyFun.API.Repositories
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
-                entity.Property(e => e.ApiID).HasColumnName("team_api_id");
+                entity.Property(e => e.ApiId).HasColumnName("team_api_id");
 
                 entity.Property(e => e.FifaApiId).HasColumnName("team_fifa_api_id");
 
