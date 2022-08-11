@@ -19,7 +19,7 @@ namespace FantasyFun.API.Controllers
         }
         [HttpGet]
         [Route("{country}")]
-        public async Task<ActionResult<string>> GetLigueByCountry(string country)
+        public async Task<ActionResult<string>> GetLeagueByCountry(string country)
         {
             var db = new FootballDbContext();
 
@@ -31,6 +31,24 @@ namespace FantasyFun.API.Controllers
             //var sql = db.Leagues.Where(l => l.Country.Name == country).Select(l => l.Name).ToQueryString();
 
             return leagueName;
+        }
+
+        [HttpGet]
+        [Route("interface/{country}/{custom}")]
+        public ActionResult<string> LearnInterfaces(string country, bool custom)
+        {
+            ILeagueRepository repo;
+
+            if (custom)
+            {
+                repo = new CustomLeagueRepository();
+            }
+            else
+            {
+                repo = new LeagueRepository();
+            }
+
+            return repo.GetNameByCountry(country);
         }
     }
 }
