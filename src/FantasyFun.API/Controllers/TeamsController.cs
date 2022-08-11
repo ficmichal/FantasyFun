@@ -11,11 +11,11 @@ namespace FantasyFun.API.Controllers
     {
         [HttpGet]
         [Route("{id}")]
-        public async Task<ActionResult<TeamName>> GetAnyTeam(long id)
+        public async Task<ActionResult<TeamName>> GetTeamById(long id)
         {
             var db = new FootballDbContext();
 
-            var anyTeam = await db.Teams
+            var team = await db.Teams
                 .Where(l => l.Id == id)
                 .Select(l => new TeamName
                 {
