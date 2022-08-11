@@ -19,6 +19,7 @@ namespace FantasyFun.API.Repositories
 
         public virtual DbSet<League> Leagues { get; set; }
         public virtual DbSet<Country> Countries { get; set; }
+        public virtual DbSet<Team> Teams { get; set; } 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
