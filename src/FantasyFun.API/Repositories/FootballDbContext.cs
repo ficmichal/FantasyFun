@@ -19,6 +19,7 @@ namespace FantasyFun.API.Repositories
 
         public virtual DbSet<League> Leagues { get; set; }
         public virtual DbSet<Country> Countries { get; set; }
+        public virtual DbSet<Team> Teams { get; set; } 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -44,6 +45,21 @@ namespace FantasyFun.API.Repositories
                 entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.Name).HasColumnName("name");
+            });
+
+            modelBuilder.Entity<Team>(entity =>
+            {
+                entity.ToTable("Team");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.ApiId).HasColumnName("team_api_id");
+
+                entity.Property(e => e.FifaApiId).HasColumnName("team_fifa_api_id");
+
+                entity.Property(e => e.LongName).HasColumnName("team_long_name");
+
+                entity.Property(e => e.ShortName).HasColumnName("team_short_name");
             });
         }
     }
