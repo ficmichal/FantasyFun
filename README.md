@@ -13,3 +13,14 @@ https://www.kaggle.com/datasets/hugomathien/soccer
 3. Create PlayersController.
 4. Create Get method in PlayersController which returns player name and overall rating by given in as a parameter.
 5. Create Get method in PlayersController which returns ALL players with given overall.
+
+Update:
+Ref 4:
+Make default game week as 01-03-2015. Given player id returns player name and overall rating closest before default game week.
+
+Ref 5:
+Make default game week as 01-03-2015. Given overall returns ALL players (DISTINICT) which has this overall at the time default or earlier default game week. Take 100 first results.
+
+### Lesson 2
+
+Encapsulate all endpoint with ActionResult proper objects.
