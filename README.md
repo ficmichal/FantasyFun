@@ -23,4 +23,4 @@ Make default game week as 01-03-2015. Given overall returns ALL players (DISTINI
 
 ### Lesson 2
 
-Encapsulate all endpoint with ActionResult proper objects.
+Encapsulate all endpoints with ActionResult proper objects.
