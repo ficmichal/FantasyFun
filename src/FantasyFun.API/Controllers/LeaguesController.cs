@@ -9,12 +9,19 @@ namespace FantasyFun.API.Controllers
     public class LeaguesController : ControllerBase
     {
         [HttpGet]
-        public async Task<ActionResult<string>> GetAnyLeague()
+        [Route("{id}")]
+        public async Task<ActionResult<string>> GetAnyLeague(long id)
         {
             var db = new FootballDbContext();
 
-            var anyLeague = await db.Leagues.FirstOrDefaultAsync();
-            return anyLeague.Name;
+            var anyLeague = await db.Leagues.Where(x => x.Id == id).FirstOrDefaultAsync();
+
+            if (anyLeague == null)
+            {
+                return NotFound(string.Empty);
+            }
+
+            return Ok(anyLeague.Name);
         }
     }
 }
