@@ -6,6 +6,8 @@ namespace FantasyFun.API
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddRouting();
+
             builder.Services.AddControllers();
 
             var app = builder.Build();
