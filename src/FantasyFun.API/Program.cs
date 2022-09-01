@@ -10,7 +10,8 @@ namespace FantasyFun.API
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddControllers();
-            builder.Services.AddScoped<FootballDbContext>(serviceProvider => new FootballDbContext(new DbSettings()));
+            var dbSettings = builder.Configuration.GetSection("Db").Get<DbSettings>();
+            builder.Services.AddScoped<FootballDbContext>(serviceProvider => new FootballDbContext(dbSettings));
 
             var app = builder.Build();
 
