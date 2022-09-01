@@ -18,15 +18,26 @@ namespace FantasyFun.API.Controllers
         {
             var db = new FootballDbContext();
 
+            // TODO change to two separate queries (more readable approach)
             var anyPlayer = await db.PlayerAttributes
-                .Where(l => l.OverallRating == overall && l.Date <= _defaultGameTime)
+                .Where(l => l.Date <= _defaultGameTime)
                 .OrderByDescending(l => l.Date)
-                .GroupBy(l => l.Player.Name)//.Max(l => l.Select(k => k.Date))
-                .Select(l => l.FirstOrDefault()).Select(l => l.Player.Name)
+                .GroupBy(l => new
+                {
+                    l.Player.Name,
+                    l.OverallRating
+                })
+                .Select(l => new
+                    {
+                        PlayerName = l.FirstOrDefault().Player.Name,
+                        Overall = l.FirstOrDefault().OverallRating,
+                    })
+                .Where(l => l.Overall == overall)
+                .Select(l => l.PlayerName)
                 .Take(100)
                 .ToListAsync();
-            
-            if(anyPlayer == null)
+
+            if (anyPlayer == null)
             {
                 return NotFound(string.Empty);
             }
