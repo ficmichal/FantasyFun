@@ -4,6 +4,17 @@
 
 https://www.kaggle.com/datasets/hugomathien/soccer
 
+## Learning log
+
+### Interfaces
+
+Branch: https://github.com/ficmichal/FantasyFun/tree/feature/-learn-interfaces
+Main commit: https://github.com/ficmichal/FantasyFun/compare/main...feature/-learn-interfaces
+
+### HTTP codes
+Branch: https://github.com/ficmichal/FantasyFun/tree/feature/learn-http-codes
+Main commit: https://github.com/ficmichal/FantasyFun/compare/main...feature/learn-http-codes
+
 ## Homework
 
 ### Lesson 1
