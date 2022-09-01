@@ -36,3 +36,9 @@ Make default game week as 01-03-2015. Given overall returns ALL players (DISTINI
 ### Lesson 2
 
 Encapsulate all endpoints with ActionResult proper objects.
+
+### Lesson 3
+
+1. Separate query in Players controller into two parts (more readable approach).
+2. Use Depencendy Injection in TeamsController.
+3. Move GameDateTime (2015-03-01) to settings (configuration) (you probably need to regsiter binded class in .NET Service Register (use builder.Services.AddScoped<>() after GetSection().Get()).
