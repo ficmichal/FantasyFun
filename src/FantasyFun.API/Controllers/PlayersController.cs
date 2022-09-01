@@ -10,6 +10,8 @@ namespace FantasyFun.API.Controllers
     [ApiController]
     public class PlayersController : ControllerBase
     {
+        private readonly DateTime _defaultGameTime = new DateTime(2015, 3, 1);
+
         [HttpGet]
         [Route("overall/{overall}")]
         public async Task<ActionResult<List<string>>> GetAnyPlayers(long overall)
@@ -17,11 +19,19 @@ namespace FantasyFun.API.Controllers
             var db = new FootballDbContext();
 
             var anyPlayer = await db.PlayerAttributes
-                .Where(l => l.OverallRating == overall)
-                .Select(l => l.Player.Name).Take(10).ToListAsync();
-                
+                .Where(l => l.OverallRating == overall && l.Date <= _defaultGameTime)
+                .OrderByDescending(l => l.Date)
+                .GroupBy(l => l.Player.Name)//.Max(l => l.Select(k => k.Date))
+                .Select(l => l.FirstOrDefault()).Select(l => l.Player.Name)
+                .Take(100)
+                .ToListAsync();
+            
+            if(anyPlayer == null)
+            {
+                return NotFound(string.Empty);
+            }
 
-            return anyPlayer;
+            return Ok(anyPlayer);
         }
         
         [HttpGet]
@@ -29,15 +39,20 @@ namespace FantasyFun.API.Controllers
         public async Task<ActionResult<PlayerType>> GetPlayersByOverall(int id)
         {
             var db = new FootballDbContext();
+            
 
             var allPlayers = await db.Players
-                .Where(l => l.Id == id)
-                .Select(l => new PlayerType(l.Name, l.Players.FirstOrDefault().OverallRating)).FirstOrDefaultAsync();
+                .Where(l => l.Id == id && l.Players.FirstOrDefault().Date <= _defaultGameTime)
+                .OrderByDescending(l => l.Players.FirstOrDefault().Date)
+                .Select(l => new PlayerType(l.Name, l.Players.FirstOrDefault().OverallRating, l.Players.FirstOrDefault().Date))
+                .FirstOrDefaultAsync();
 
-            return allPlayers;
+            if (allPlayers == null)
+            {
+                return NotFound(string.Empty);
+            }
 
-
-            
+            return Ok(allPlayers);
         }
        
     }

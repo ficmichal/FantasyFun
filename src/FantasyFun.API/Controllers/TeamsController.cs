@@ -20,7 +20,12 @@ namespace FantasyFun.API.Controllers
                 .Select(l => new TeamName(l.LongName,l.ShortName))
                 .FirstOrDefaultAsync();
 
-            return team;
+            if (team == null)
+            {
+                return NotFound(string.Empty);
+            }
+
+            return Ok(team);
         }
     }
 }

@@ -14,8 +14,15 @@ namespace FantasyFun.API.Controllers
             var db = new FootballDbContext();
 
             var anyLeague = await db.Leagues.FirstOrDefaultAsync();
+            
+            if(anyLeague == null)
+            {
+                return NotFound(string.Empty);
+            }
 
-            return anyLeague.Name;
+            return Ok(anyLeague.Name);
+
+
         }
         [HttpGet]
         [Route("{country}")]
@@ -28,9 +35,16 @@ namespace FantasyFun.API.Controllers
                 .Select(l=>l.Name)
                 .FirstOrDefaultAsync();
 
+            if (leagueName == null)
+            {
+                return NotFound(string.Empty);
+            }
+
             //var sql = db.Leagues.Where(l => l.Country.Name == country).Select(l => l.Name).ToQueryString();
 
-            return leagueName;
+            return Ok(leagueName);
         }
+       
+       
     }
 }

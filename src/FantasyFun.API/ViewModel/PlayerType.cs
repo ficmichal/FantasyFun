@@ -4,11 +4,13 @@
     {
         public string Name { get; }
         public long OverallRating { get;}
+        public DateTime Date { get; }
 
-        public PlayerType(string name, long overallRating)
+        public PlayerType(string name, long overallRating, DateTime date)
         {
             Name = name;
             OverallRating = overallRating;
+            Date = date;
         }
     }
 }
