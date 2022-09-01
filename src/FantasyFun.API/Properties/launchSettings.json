@@ -1,23 +1,22 @@
-﻿{
+{
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
       "applicationUrl": "http://localhost:28396",
-      "launchUrl": "api/home",
       "sslPort": 44342
     }
   },
   "profiles": {
     "FantasyFun.API": {
       "commandName": "Project",
-      "dotnetRunMessages": true,
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:7127;http://localhost:5127",
       "launchUrl": "api/home",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "applicationUrl": "https://localhost:7127;http://localhost:5127",
+      "dotnetRunMessages": true
     },
     "IIS Express": {
       "commandName": "IISExpress",
