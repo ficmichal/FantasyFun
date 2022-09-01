@@ -9,12 +9,17 @@ namespace FantasyFun.API.Controllers
     [ApiController]
     public class LeaguesController : ControllerBase
     {
+        private readonly FootballDbContext _dbContext;
+
+        public LeaguesController(FootballDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
         [HttpGet]
         public async Task<ActionResult<string>> GetAnyLeague()
         {
-            var db = new FootballDbContext(new DbSettings());
-
-            var anyLeague = await db.Leagues.FirstOrDefaultAsync();
+            var anyLeague = await _dbContext.Leagues.FirstOrDefaultAsync();
 
             return anyLeague.Name;
         }
@@ -22,9 +27,7 @@ namespace FantasyFun.API.Controllers
         [Route("{country}")]
         public async Task<ActionResult<string>> GetLigueByCountry(string country)
         {
-            var db = new FootballDbContext(new DbSettings());
-
-            var leagueName = await db.Leagues
+            var leagueName = await _dbContext.Leagues
                 .Where(l => l.Country.Name == country)
                 .Select(l=>l.Name)
                 .FirstOrDefaultAsync();
