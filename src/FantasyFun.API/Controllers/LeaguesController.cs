@@ -1,4 +1,5 @@
 ﻿using FantasyFun.API.Repositories;
+using FantasyFun.API.Settings;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,7 +12,7 @@ namespace FantasyFun.API.Controllers
         [HttpGet]
         public async Task<ActionResult<string>> GetAnyLeague()
         {
-            var db = new FootballDbContext();
+            var db = new FootballDbContext(new DbSettings());
 
             var anyLeague = await db.Leagues.FirstOrDefaultAsync();
 
@@ -21,7 +22,7 @@ namespace FantasyFun.API.Controllers
         [Route("{country}")]
         public async Task<ActionResult<string>> GetLigueByCountry(string country)
         {
-            var db = new FootballDbContext();
+            var db = new FootballDbContext(new DbSettings());
 
             var leagueName = await db.Leagues
                 .Where(l => l.Country.Name == country)
