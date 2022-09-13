@@ -1,17 +1,18 @@
 ﻿using FantasyFun.API.Models;
 using Microsoft.EntityFrameworkCore;
+using FantasyFun.API.Settings;
 
 namespace FantasyFun.API.Repositories
 {
     public class FootballDbContext : DbContext
     {
-        public const string DbPath = "data\\database.sqlite";
+        //public const string DbPath = "data\\database.sqlite";
         public readonly string ConnectionString;
 
-        public FootballDbContext()
+        public FootballDbContext(DbSettings dbSettings)
         {
             var folder = Directory.GetCurrentDirectory();
-            ConnectionString = Path.Combine(folder, "..", "..", DbPath);
+            ConnectionString = Path.Combine(folder, "..", "..", dbSettings.ConnectionString);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
