@@ -1,17 +1,17 @@
 ﻿using FantasyFun.API.Models;
 using Microsoft.EntityFrameworkCore;
+using FantasyFun.API.Settings;
 
 namespace FantasyFun.API.Repositories
 {
     public class FootballDbContext : DbContext
     {
-        public const string DbPath = "data\\database.sqlite";
         public readonly string ConnectionString;
 
-        public FootballDbContext()
+        public FootballDbContext(DbSettings dbSettings)
         {
             var folder = Directory.GetCurrentDirectory();
-            ConnectionString = Path.Combine(folder, "..", "..", DbPath);
+            ConnectionString = Path.Combine(folder, "..", "..", dbSettings.ConnectionString);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
@@ -20,6 +20,8 @@ namespace FantasyFun.API.Repositories
         public virtual DbSet<League> Leagues { get; set; }
         public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<Team> Teams { get; set; } 
+        public virtual DbSet<Player> Players { get; set; }  
+        public virtual DbSet<Player_Attribute> PlayerAttributes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -60,6 +62,41 @@ namespace FantasyFun.API.Repositories
                 entity.Property(e => e.LongName).HasColumnName("team_long_name");
 
                 entity.Property(e => e.ShortName).HasColumnName("team_short_name");
+            });
+
+            modelBuilder.Entity<Player>(entity =>
+            {
+                entity.ToTable("Player");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.ApiId).HasColumnName("player_api_id");
+
+                entity.Property(e => e.Name).HasColumnName("player_name");
+
+                entity.Property(e => e.FifaApiId).HasColumnName("player_fifa_api_id");
+
+                entity.Property(e => e.Birthday).HasColumnName("birthday");
+            });
+
+            modelBuilder.Entity<Player_Attribute>(entity =>
+            {
+                entity.ToTable("Player_Attributes");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.FifaApiId).HasColumnName("player_fifa_api_id");
+
+                entity.Property(e => e.ApiId).HasColumnName("player_api_id");
+
+                entity.Property(e => e.Date).HasColumnName("date");
+
+                entity.Property(e => e.OverallRating).HasColumnName("overall_rating");
+
+                entity.HasOne(d => d.Player)
+                      .WithMany(p => p.Players)
+                      .HasForeignKey(d => d.ApiId)
+                      .HasPrincipalKey(p => p.ApiId);
             });
         }
     }
