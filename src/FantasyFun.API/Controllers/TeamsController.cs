@@ -21,8 +21,6 @@ namespace FantasyFun.API.Controllers
         [Route("{id}")]
         public async Task<ActionResult<TeamName>> GetTeamById(long id)
         {
-            //var db = new FootballDbContext(new DbSettings());
-
             var team = await _dbContext.Teams
                 .Where(l => l.Id == id)
                 .Select(l => new TeamName(l.LongName,l.ShortName))
