@@ -1,6 +1,8 @@
-﻿using FantasyFun.API.Repositories;
+﻿using FantasyFun.API.Models;
+using FantasyFun.API.Repositories;
 using FantasyFun.API.Settings;
 using FantasyFun.API.ViewModel;
+using FantasyFun.Application;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -16,12 +18,14 @@ namespace FantasyFun.API.Controllers
         private readonly DateTime _defaultGameTime;
 
         private readonly FootballDbContext _dbContext;
+        private readonly IPlayersService _playersService;
 
         private readonly int _InternalPlayersByOverallMaxNumber;
 
-        public PlayersController(FootballDbContext dbContext, GameSettings gameSettings)
+        public PlayersController(FootballDbContext dbContext, GameSettings gameSettings, IPlayersService playersService)
         {
             _dbContext = dbContext;
+            _playersService = playersService;
             _defaultGameTime = gameSettings.DefaultGameTime;
             _InternalPlayersByOverallMaxNumber = gameSettings.InternalPlayersByOverallMaxNumber;
         }
@@ -30,19 +34,21 @@ namespace FantasyFun.API.Controllers
         [Route("overall/{overall}")]
         public async Task<ActionResult<List<string>>> GetAnyPlayers(long overall)
         {
-            var anyPlayers = await _dbContext.PlayerAttributes
-                .Where(l => l.Date <= _defaultGameTime)
-                .OrderByDescending(l => l.Date)
-                .GroupBy(l => l.Player.Name)
-                .Select(l => new PlayerType(l.FirstOrDefault().Player.Name, l.FirstOrDefault().OverallRating))
-                .Take(500)
-                .ToListAsync();
+            var anyPlayersWithOverall = await _playersService.GetPlayersByOverall(overall);
 
-            var anyPlayersWithOverall = anyPlayers
-                .Where(l => l.OverallRating == overall)
-                .Select(l => l.Name)
-                .Take(_InternalPlayersByOverallMaxNumber)
-                .ToList();
+            //var anyPlayers = await _dbContext.PlayerAttributes
+            //    .Where(l => l.Date <= _defaultGameTime)
+            //    .OrderByDescending(l => l.Date)
+            //    .GroupBy(l => l.Player.Name)
+            //    .Select(l => new PlayerType(l.FirstOrDefault().Player.Name, l.FirstOrDefault().OverallRating))
+            //    .Take(500)
+            //    .ToListAsync();
+
+            //var anyPlayersWithOverall = anyPlayers
+            //    .Where(l => l.OverallRating == overall)
+            //    .Select(l => l.Name)
+            //    .Take(_InternalPlayersByOverallMaxNumber)
+            //    .ToList();
 
             if (anyPlayersWithOverall == null)
             {

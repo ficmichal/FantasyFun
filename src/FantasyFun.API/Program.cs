@@ -1,5 +1,6 @@
 using FantasyFun.API.Repositories;
 using FantasyFun.API.Settings;
+using FantasyFun.Application;
 
 namespace FantasyFun.API
 {
@@ -18,6 +19,8 @@ namespace FantasyFun.API
 
             var gameSettings = builder.Configuration.GetSection("GameSettings").Get<GameSettings>();
             builder.Services.AddScoped<GameSettings>(serviceProvider => gameSettings);
+
+            builder.Services.RegisterDummyNamedPlayerService("Michal Fic");
 
             var app = builder.Build();
 
