@@ -1,11 +1,9 @@
-﻿using FantasyFun.API.Models;
-using FantasyFun.API.Repositories;
-using FantasyFun.API.Settings;
-using FantasyFun.API.ViewModel;
+﻿using FantasyFun.API.ViewModel;
 using FantasyFun.Application;
+using FantasyFun.Application.Settings;
+using FantasyFun.DAL;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
 namespace FantasyFun.API.Controllers
 {
@@ -35,20 +33,6 @@ namespace FantasyFun.API.Controllers
         public async Task<ActionResult<List<string>>> GetAnyPlayers(long overall)
         {
             var anyPlayersWithOverall = await _playersService.GetPlayersByOverall(overall);
-
-            //var anyPlayers = await _dbContext.PlayerAttributes
-            //    .Where(l => l.Date <= _defaultGameTime)
-            //    .OrderByDescending(l => l.Date)
-            //    .GroupBy(l => l.Player.Name)
-            //    .Select(l => new PlayerType(l.FirstOrDefault().Player.Name, l.FirstOrDefault().OverallRating))
-            //    .Take(500)
-            //    .ToListAsync();
-
-            //var anyPlayersWithOverall = anyPlayers
-            //    .Where(l => l.OverallRating == overall)
-            //    .Select(l => l.Name)
-            //    .Take(_InternalPlayersByOverallMaxNumber)
-            //    .ToList();
 
             if (anyPlayersWithOverall == null)
             {

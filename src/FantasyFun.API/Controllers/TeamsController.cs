@@ -1,8 +1,8 @@
-﻿using FantasyFun.API.Repositories;
-using FantasyFun.API.ViewModel;
+﻿using FantasyFun.API.ViewModel;
+using FantasyFun.DAL;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using FantasyFun.API.Settings;
+
 namespace FantasyFun.API.Controllers
 {
     [Route("api/[controller]")]

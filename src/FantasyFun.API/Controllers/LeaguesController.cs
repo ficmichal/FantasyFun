@@ -1,4 +1,4 @@
-﻿using FantasyFun.API.Repositories;
+﻿using FantasyFun.DAL;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
