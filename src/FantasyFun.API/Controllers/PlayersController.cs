@@ -20,14 +20,12 @@ namespace FantasyFun.API.Controllers
         private readonly FootballDbContext _dbContext;
         private readonly IPlayerService _playerService;
 
-        private readonly int _InternalPlayersByOverallMaxNumber;
 
         public PlayersController(FootballDbContext dbContext, GameSettings gameSettings, IPlayerService playerService)
         {
             _dbContext = dbContext;
             _playerService = playerService;
             _defaultGameTime = gameSettings.DefaultGameTime;
-            _InternalPlayersByOverallMaxNumber = gameSettings.InternalPlayersByOverallMaxNumber;
         }
 
         [HttpGet]

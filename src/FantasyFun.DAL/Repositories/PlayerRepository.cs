@@ -1,5 +1,6 @@
 ﻿using FantasyFun.DAL.Settings;
 using FantasyFun.DAL.ViewModel;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
