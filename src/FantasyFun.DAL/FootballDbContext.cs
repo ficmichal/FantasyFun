@@ -1,8 +1,8 @@
-﻿using FantasyFun.API.Models;
+﻿using FantasyFun.DAL.Models;
 using Microsoft.EntityFrameworkCore;
-using FantasyFun.API.Settings;
+using FantasyFun.DAL.Settings;
 
-namespace FantasyFun.API.Repositories
+namespace FantasyFun.DAL
 {
     public class FootballDbContext : DbContext
     {
