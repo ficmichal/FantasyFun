@@ -1,0 +1,11 @@
+﻿1. Przenieść pozostałe metody
+	a) z PlayersController do PlayerService
+	b) z TeamsController do nowego TeamService -> TeamRepository
+	c) LeagueController - jedna metode wywalić, drugą podobnie jak w b)
+
+2. Zrobić toola podobnie jak na lekcji.
+3. Dodać nowy model do Models (Match z bazy sqlLite)
+	a) dodać do DbContext DbSet Matches
+	b) zaaktualizować Toola o kopiowanie Matches
+	c) kolumny z Matches: wszystkie od lewej do kolumny Goal + kartki. Uważaj na niby integery które mogą mieć nulle!!
+4. Podmienić ConnectionString w FootbalDbContext na SQLServer
