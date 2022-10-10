@@ -7,7 +7,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5A2AE9F7-231
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{03FC932D-8741-4370-989D-DFA17FDAD54E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FantasyFun.API", "src\FantasyFun.API\FantasyFun.API.csproj", "{8A49B9F8-01E7-46CF-BFA8-32477F844B8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FantasyFun.API", "src\FantasyFun.API\FantasyFun.API.csproj", "{8A49B9F8-01E7-46CF-BFA8-32477F844B8B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{1641D60C-DEC6-464B-8C16-35A6EEF57A7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FantasyFun.DataMigrator", "tools\FantasyFun.DataMigrator\FantasyFun.DataMigrator.csproj", "{06780B4E-DF29-4C84-8A83-5B0472B9A3BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,12 +23,17 @@ Global
 		{8A49B9F8-01E7-46CF-BFA8-32477F844B8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A49B9F8-01E7-46CF-BFA8-32477F844B8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A49B9F8-01E7-46CF-BFA8-32477F844B8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06780B4E-DF29-4C84-8A83-5B0472B9A3BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06780B4E-DF29-4C84-8A83-5B0472B9A3BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06780B4E-DF29-4C84-8A83-5B0472B9A3BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06780B4E-DF29-4C84-8A83-5B0472B9A3BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8A49B9F8-01E7-46CF-BFA8-32477F844B8B} = {5A2AE9F7-231F-4089-9DE2-C2B2327C77B3}
+		{06780B4E-DF29-4C84-8A83-5B0472B9A3BB} = {1641D60C-DEC6-464B-8C16-35A6EEF57A7D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FD00D1A0-44C3-4081-9C4A-4437DE56D333}
