@@ -23,6 +23,10 @@ namespace FantasyFun.API
 
             builder.Services.RegisterPlayerService();
             builder.Services.RegisterPlayerRepository();
+            builder.Services.RegisterTeamRepository();
+            builder.Services.RegisterTeamService();
+            builder.Services.RegisterLeaguesRepository();
+            builder.Services.RegisterLeaguesService();
 
             var app = builder.Build();
 

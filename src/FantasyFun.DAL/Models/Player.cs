@@ -13,6 +13,6 @@
         public int FifaApiId { get; set; }
         public  DateTime Birthday { get; set; }
 
-        public virtual ICollection<Player_Attribute> Players { get; set; }
+        public virtual ICollection<Player_Attribute>? Players { get; set; }
     }
 }

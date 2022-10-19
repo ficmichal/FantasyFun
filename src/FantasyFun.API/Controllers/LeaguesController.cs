@@ -1,4 +1,5 @@
-﻿using FantasyFun.DAL;
+﻿using FantasyFun.Application.ViewModel;
+using FantasyFun.DAL;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,9 +9,9 @@ namespace FantasyFun.API.Controllers
     [ApiController]
     public class LeaguesController : ControllerBase
     {
-        private readonly FootballDbContext _dbContext;
+        private readonly ILeaguesService _dbContext;
 
-        public LeaguesController(FootballDbContext dbContext)
+        public LeaguesController(ILeaguesService dbContext)
         {
             _dbContext = dbContext;
         }
@@ -19,7 +20,7 @@ namespace FantasyFun.API.Controllers
         public async Task<ActionResult<string>> GetAnyLeague()
         {
 
-            var anyLeague = await _dbContext.Leagues.FirstOrDefaultAsync();
+            var anyLeague = _dbContext.GetAnyLeague();
             
             if(anyLeague == null)
             {
@@ -32,13 +33,10 @@ namespace FantasyFun.API.Controllers
         }
         [HttpGet]
         [Route("{country}")]
-        public async Task<ActionResult<string>> GetLigueByCountry(string country)
+        public async Task<ActionResult<string>> GetLeagueByCountry(string country)
         {
 
-            var leagueName = await _dbContext.Leagues
-                .Where(l => l.Country.Name == country)
-                .Select(l=>l.Name)
-                .FirstOrDefaultAsync();
+            var leagueName = _dbContext.GetLeagueByCountry(country);
 
             if (leagueName == null)
             {

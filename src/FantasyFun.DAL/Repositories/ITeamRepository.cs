@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace FantasyFun.DAL.Repositories
 {
-    public interface IPlayerRepository
+    public interface ITeamRepository
     {
-        Task<IEnumerable<string>> GetPlayerByOverall(long overall);
-        Task<IEnumerable<PlayerType>> GetPlayerById(int id);
+        Task<IEnumerable<TeamName>> GetTeamById(int id);
     }
 }

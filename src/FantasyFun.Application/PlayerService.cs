@@ -25,6 +25,12 @@ namespace FantasyFun.Application
 
             return anyPlayersWithOverall;
         }
+        
+        public async Task<IEnumerable<PlayerType>> GetPlayerById(int id)
+        {
+            var allPlayers = await _playerRepository.GetPlayerById(id);
+            return allPlayers;
+        }
     }
 
 }

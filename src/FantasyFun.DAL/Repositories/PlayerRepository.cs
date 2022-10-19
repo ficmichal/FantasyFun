@@ -23,6 +23,7 @@ namespace FantasyFun.DAL.Repositories
             _InternalPlayersByOverallMaxNumber = gameSettings.InternalPlayersByOverallMaxNumber;
 
         }
+
         public async Task<IEnumerable<string>> GetPlayerByOverall(long overall)
         {
             var anyPlayers = await _dbContext.PlayerAttributes
@@ -40,6 +41,17 @@ namespace FantasyFun.DAL.Repositories
                 .ToList();
 
             return anyPlayersWithOverall;
+        }
+
+        public async Task<IEnumerable<PlayerType>> GetPlayerById(int id)
+        { 
+            var allPlayers = await _dbContext.Players
+                .Where(l => l.Id == id && l.Players.FirstOrDefault().Date <= _defaultGameTime)
+                .OrderByDescending(l => l.Players.FirstOrDefault().Date)
+                .Select(l => new PlayerType(l.Name, l.Players.FirstOrDefault().OverallRating))
+                .FirstOrDefaultAsync();
+
+            return allPlayers;  
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using FantasyFun.API.ViewModel;
+using FantasyFun.Application;
 using FantasyFun.DAL;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,21 +10,18 @@ namespace FantasyFun.API.Controllers
     public class TeamsController : ControllerBase
     {
 
-        private readonly FootballDbContext _dbContext;
+        private readonly ITeamService _dbContext;
 
-        public TeamsController(FootballDbContext dbcontext)
+        public TeamsController(ITeamService dbcontext)
         {
             _dbContext = dbcontext;
         }
         
         [HttpGet]
         [Route("{id}")]
-        public async Task<ActionResult<TeamName>> GetTeamById(long id)
+        public async Task<ActionResult<TeamName>> GetTeamById(int id)
         {
-            var team = await _dbContext.Teams
-                .Where(l => l.Id == id)
-                .Select(l => new TeamName(l.LongName,l.ShortName))
-                .FirstOrDefaultAsync();
+            var team = await _dbContext.GetTeamById(id);
 
             if (team == null)
             {

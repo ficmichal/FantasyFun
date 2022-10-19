@@ -1,6 +1,5 @@
 ﻿using FantasyFun.API.ViewModel;
 using FantasyFun.Application;
-using FantasyFun.Application.Settings;
 using FantasyFun.DAL;
 using FantasyFun.DAL.Settings;
 using Microsoft.AspNetCore.Mvc;
@@ -47,11 +46,7 @@ namespace FantasyFun.API.Controllers
         [Route("{id}")]
         public async Task<ActionResult<PlayerType>> GetPlayersById(int id)
         {
-            var allPlayers = await _dbContext.Players
-                .Where(l => l.Id == id && l.Players.FirstOrDefault().Date <= _defaultGameTime)
-                .OrderByDescending(l => l.Players.FirstOrDefault().Date)
-                .Select(l => new PlayerType(l.Name, l.Players.FirstOrDefault().OverallRating, l.Players.FirstOrDefault().Date))
-                .FirstOrDefaultAsync();
+            var allPlayers = await _playerService.GetPlayerById(id);
 
             if (allPlayers == null)
             {
