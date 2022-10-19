@@ -1,15 +1,15 @@
-﻿using FantasyFun.DAL.Models;
+﻿using FantasyFun.Application.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FantasyFun.Application.ViewModel
+namespace FantasyFun.Application
 {
     public interface ILeaguesService
     {
-        Task<IEnumerable<string>> GetLeagueByCountry(string country);
-        Task<IEnumerable<League>> GetAnyLeague();
+        Task<string> GetLeagueByCountry(string country);
+        Task<League> GetAnyLeague();
     }
 }

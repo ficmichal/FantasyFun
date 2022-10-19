@@ -9,18 +9,18 @@ namespace FantasyFun.API.Controllers
     [ApiController]
     public class LeaguesController : ControllerBase
     {
-        private readonly ILeaguesService _dbContext;
+        private readonly ILeaguesService _leagueService;
 
-        public LeaguesController(ILeaguesService dbContext)
+        public LeaguesController(ILeaguesService leagueService)
         {
-            _dbContext = dbContext;
+            _leagueService = leagueService;
         }
 
         [HttpGet]
         public async Task<ActionResult<string>> GetAnyLeague()
         {
 
-            var anyLeague = _dbContext.GetAnyLeague();
+            var anyLeague = await _leagueService.GetAnyLeague();
             
             if(anyLeague == null)
             {
@@ -36,7 +36,7 @@ namespace FantasyFun.API.Controllers
         public async Task<ActionResult<string>> GetLeagueByCountry(string country)
         {
 
-            var leagueName = _dbContext.GetLeagueByCountry(country);
+            var leagueName = _leagueService.GetLeagueByCountry(country);
 
             if (leagueName == null)
             {

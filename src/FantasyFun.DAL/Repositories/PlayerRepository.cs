@@ -15,7 +15,6 @@ namespace FantasyFun.DAL.Repositories
         private readonly DateTime _defaultGameTime;
         private readonly int _InternalPlayersByOverallMaxNumber;
 
-
         public PlayerRepository(FootballDbContext dbContext, GameSettings gameSettings)
         {
             _dbContext = dbContext;
@@ -43,7 +42,7 @@ namespace FantasyFun.DAL.Repositories
             return anyPlayersWithOverall;
         }
 
-        public async Task<IEnumerable<PlayerType>> GetPlayerById(int id)
+        public async Task<PlayerType> GetPlayerById(int id)
         { 
             var allPlayers = await _dbContext.Players
                 .Where(l => l.Id == id && l.Players.FirstOrDefault().Date <= _defaultGameTime)

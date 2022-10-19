@@ -17,7 +17,7 @@ namespace FantasyFun.DAL.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<IEnumerable<TeamName>> GetTeamById(int id)
+        public async Task<TeamName> GetTeamById(int id)
         {
             var team = await _dbContext.Teams
                 .Where(l => l.Id == id)

@@ -9,6 +9,6 @@ namespace FantasyFun.DAL.Repositories
 {
     public interface ITeamRepository
     {
-        Task<IEnumerable<TeamName>> GetTeamById(int id);
+        Task<TeamName> GetTeamById(int id);
     }
 }

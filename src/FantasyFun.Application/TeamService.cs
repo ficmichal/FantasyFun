@@ -17,10 +17,10 @@ namespace FantasyFun.Application
             _teamRepo = teamRepo;
         }
 
-        public async Task<IEnumerable<TeamName>> GetTeamById(int id)
+        public async Task<TeamName> GetTeamById(int id)
         {
             var team = await _teamRepo.GetTeamById(id);
-            return team;
+            return new TeamName(team.LongName, team.ShortName);
         }
     }
 }

@@ -9,6 +9,6 @@ namespace FantasyFun.Application
 {
     public interface ITeamService
     {
-        Task<IEnumerable<TeamName>> GetTeamById(int id);
+        Task<TeamName> GetTeamById(int id);
     }
 }

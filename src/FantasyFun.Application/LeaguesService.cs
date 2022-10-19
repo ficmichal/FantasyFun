@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FantasyFun.Application.ViewModel;
+using League = FantasyFun.Application.ViewModel.League;
 
 namespace FantasyFun.Application
 {
@@ -17,13 +19,13 @@ namespace FantasyFun.Application
             _leaguesRepo = leaguesRepo;
         }
 
-        public Task<IEnumerable<League>> GetAnyLeague()
+        public async Task<League> GetAnyLeague()
         {
-            var anyLeague = _leaguesRepo.GetAnyLeague();
-            return anyLeague;
+            var anyLeague = await  _leaguesRepo.GetAnyLeague();
+            return new League(anyLeague.Id, anyLeague.Name);
         }
 
-        public async Task<IEnumerable<string>> GetLeagueByCountry(string country)
+        public async Task<string> GetLeagueByCountry(string country)
         {
             var leagueName = await _leaguesRepo.GetLigueByCountry(country);
             return leagueName;

@@ -17,20 +17,20 @@ namespace FantasyFun.DAL.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<IEnumerable<League>> GetAnyLeague()
+        public async Task<League> GetAnyLeague()
         {
             var anyLeague = await _dbContext.Leagues.FirstOrDefaultAsync();
             return anyLeague;
         }
 
-        public async Task<IEnumerable<string>> GetLigueByCountry(string country)
+        public async Task<string> GetLigueByCountry(string country)
         {
             var leagueName = await _dbContext.Leagues
                 .Where(l => l.Country.Name == country)
                 .Select(l => l.Name)
                 .FirstOrDefaultAsync();
 
-            return leagueName == null ? Enumerable.Empty<string>() : leagueName;
+            return leagueName;
         }
     }
 }

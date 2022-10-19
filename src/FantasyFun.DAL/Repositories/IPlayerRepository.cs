@@ -10,6 +10,6 @@ namespace FantasyFun.DAL.Repositories
     public interface IPlayerRepository
     {
         Task<IEnumerable<string>> GetPlayerByOverall(long overall);
-        Task<IEnumerable<PlayerType>> GetPlayerById(int id);
+        Task<PlayerType> GetPlayerById(int id);
     }
 }

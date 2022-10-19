@@ -9,7 +9,7 @@ namespace FantasyFun.DAL.Repositories
 {
     public interface ILeaguesRepository
     {
-        Task<IEnumerable<string>> GetLigueByCountry(string country);
-        Task<IEnumerable<League>> GetAnyLeague();
+        Task<string> GetLigueByCountry(string country);
+        Task<League> GetAnyLeague();
     }
 }
