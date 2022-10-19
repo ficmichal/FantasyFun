@@ -1,0 +1,7 @@
+﻿1. Utworzyć nowy tool o nazwie FantasyFun....PlayerToMatchCreator
+2. Ma on za zadanie stworzenie nowej migracji bazodanowej EF
+	a) migracja stworzy nową tablę PlayerToMatch
+	b) tabela będzie miała 2 pola: MatchId, PlayerId
+	c) będzie to niejako tabela łącząca obecne tabele Player i Match (klucze obce: Player - player_api_id, Match - id)
+	d) sprawdź wszystkie wystąpienia w tabeli Match w kolumnach od home_player_1 do away_player_11 - to będzie twój playerId, matchId to będzie po prostu id z Match 
+3. Tool musi przejść przez całą bazę danych i dla każdego gracza przyporządkować jego mecze.
