@@ -1,4 +1,5 @@
-﻿using FantasyFun.Application.ViewModel;
+﻿using FantasyFun.Application;
+using FantasyFun.Application.ViewModel;
 using FantasyFun.DAL;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

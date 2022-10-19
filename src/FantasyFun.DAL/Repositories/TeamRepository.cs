@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FantasyFun.DAL.Repositories
 {
-    internal class TeamRepository:ITeamRepository
+    public class TeamRepository:ITeamRepository
     {
         private readonly FootballDbContext _dbContext;
 

@@ -20,7 +20,10 @@ namespace FantasyFun.Application
         public async Task<TeamName> GetTeamById(int id)
         {
             var team = await _teamRepo.GetTeamById(id);
-            return new TeamName(team.LongName, team.ShortName);
+            return new TeamName(
+                team.LongName,
+                team.ShortName,
+                $"{team.ShortName} - {team.LongName}");
         }
     }
 }
