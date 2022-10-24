@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FantasyFun.DAL.Repositories
 {
-    static public class LeaguesRegistration
+    public static class LeaguesRegistration
     {
         public static void RegisterLeaguesRepository (this IServiceCollection service)
         {

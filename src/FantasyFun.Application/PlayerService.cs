@@ -32,5 +32,4 @@ namespace FantasyFun.Application
             return new PlayerType(allPlayers.Name, allPlayers.OverallRating);
         }
     }
-
 }

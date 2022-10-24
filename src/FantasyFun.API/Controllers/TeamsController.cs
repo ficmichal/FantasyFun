@@ -8,19 +8,18 @@ namespace FantasyFun.API.Controllers
     [ApiController]
     public class TeamsController : ControllerBase
     {
+        private readonly ITeamService _teamService;
 
-        private readonly ITeamService _dbContext;
-
-        public TeamsController(ITeamService dbcontext)
+        public TeamsController(ITeamService teamService)
         {
-            _dbContext = dbcontext;
+            _teamService = teamService;
         }
         
         [HttpGet]
         [Route("{id}")]
         public async Task<ActionResult<TeamName>> GetTeamById(int id)
         {
-            var team = await _dbContext.GetTeamById(id);
+            var team = await _teamService.GetTeamById(id);
 
             if (team == null)
             {

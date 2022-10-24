@@ -1,4 +1,4 @@
-﻿using FantasyFun.Application.ViewModel;
+﻿using FantasyFun.Application;
 using FantasyFun.DAL;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -28,14 +28,12 @@ namespace FantasyFun.API.Controllers
             }
 
             return Ok(anyLeague.Name);
-
-
         }
+
         [HttpGet]
         [Route("{country}")]
         public async Task<ActionResult<string>> GetLeagueByCountry(string country)
         {
-
             var leagueName = _leagueService.GetLeagueByCountry(country);
 
             if (leagueName == null)
@@ -47,7 +45,5 @@ namespace FantasyFun.API.Controllers
 
             return Ok(leagueName);
         }
-       
-       
     }
 }
