@@ -16,8 +16,7 @@ namespace FantasyFun.API
             builder.Services.AddControllers();
 
             var dbSettings = builder.Configuration.GetSection("Db").Get<DbSettings>();
-            builder.Services.RegisterFootballDbContext(dbSettings);
-           // builder.Services.AddScoped<FootballDbContext>(serviceProvider => new FootballDbContext(dbSettings)); 
+            builder.Services.RegisterFootballDbContext(dbSettings); 
 
             var gameSettings = builder.Configuration.GetSection("GameSettings").Get<GameSettings>();
             builder.Services.AddScoped<GameSettings>(serviceProvider => gameSettings);

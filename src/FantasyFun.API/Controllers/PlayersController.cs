@@ -14,7 +14,7 @@ namespace FantasyFun.API.Controllers
     {
         private readonly IPlayerService _playerService;
 
-        public PlayersController(FootballDbContext dbContext, GameSettings gameSettings, IPlayerService playerService)
+        public PlayersController(IPlayerService playerService)
         {
             _playerService = playerService;
         }
