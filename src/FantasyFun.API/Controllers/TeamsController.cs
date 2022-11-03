@@ -1,30 +1,25 @@
-﻿using FantasyFun.API.Repositories;
-using FantasyFun.API.ViewModel;
+﻿using FantasyFun.API.ViewModel;
+using FantasyFun.Application;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using FantasyFun.API.Settings;
 namespace FantasyFun.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class TeamsController : ControllerBase
     {
+        private readonly ITeamService _teamService;
 
-        private readonly FootballDbContext _dbContext;
-
-        public TeamsController(FootballDbContext dbcontext)
+        public TeamsController(ITeamService teamService)
         {
-            _dbContext = dbcontext;
+            _teamService = teamService;
         }
         
         [HttpGet]
         [Route("{id}")]
-        public async Task<ActionResult<TeamName>> GetTeamById(long id)
+        public async Task<ActionResult<TeamName>> GetTeamById(int id)
         {
-            var team = await _dbContext.Teams
-                .Where(l => l.Id == id)
-                .Select(l => new TeamName(l.LongName,l.ShortName))
-                .FirstOrDefaultAsync();
+            var team = await _teamService.GetTeamById(id);
 
             if (team == null)
             {

@@ -1,4 +1,4 @@
-﻿namespace FantasyFun.API.ViewModel
+﻿namespace FantasyFun.DAL.ViewModel
 {
     public class PlayerType
     {

@@ -1,5 +1,7 @@
-using FantasyFun.API.Repositories;
-using FantasyFun.API.Settings;
+using FantasyFun.Application;
+using FantasyFun.DAL;
+using FantasyFun.DAL.Repositories;
+using FantasyFun.DAL.Settings;
 
 namespace FantasyFun.API
 {
@@ -14,10 +16,17 @@ namespace FantasyFun.API
             builder.Services.AddControllers();
 
             var dbSettings = builder.Configuration.GetSection("Db").Get<DbSettings>();
-            builder.Services.AddScoped<FootballDbContext>(serviceProvider => new FootballDbContext(dbSettings));
+            builder.Services.RegisterFootballDbContext(dbSettings); 
 
             var gameSettings = builder.Configuration.GetSection("GameSettings").Get<GameSettings>();
             builder.Services.AddScoped<GameSettings>(serviceProvider => gameSettings);
+
+            builder.Services.RegisterPlayerService();
+            builder.Services.RegisterPlayerRepository();
+            builder.Services.RegisterTeamRepository();
+            builder.Services.RegisterTeamService();
+            builder.Services.RegisterLeaguesRepository();
+            builder.Services.RegisterLeaguesService();
 
             var app = builder.Build();
 

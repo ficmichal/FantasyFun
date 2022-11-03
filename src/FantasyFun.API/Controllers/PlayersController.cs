@@ -1,48 +1,29 @@
-﻿using FantasyFun.API.Repositories;
-using FantasyFun.API.Settings;
-using FantasyFun.API.ViewModel;
+﻿using FantasyFun.API.ViewModel;
+using FantasyFun.Application;
+using FantasyFun.DAL;
+using FantasyFun.DAL.Settings;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace FantasyFun.API.Controllers
 {
-
-
     [Route("api/[controller]")]
     [ApiController]
     public class PlayersController : ControllerBase
     {
-        private readonly DateTime _defaultGameTime;
+        private readonly IPlayerService _playerService;
 
-        private readonly FootballDbContext _dbContext;
-
-        private readonly int _InternalPlayersByOverallMaxNumber;
-
-        public PlayersController(FootballDbContext dbContext, GameSettings gameSettings)
+        public PlayersController(IPlayerService playerService)
         {
-            _dbContext = dbContext;
-            _defaultGameTime = gameSettings.DefaultGameTime;
-            _InternalPlayersByOverallMaxNumber = gameSettings.InternalPlayersByOverallMaxNumber;
+            _playerService = playerService;
         }
 
         [HttpGet]
         [Route("overall/{overall}")]
         public async Task<ActionResult<List<string>>> GetAnyPlayers(long overall)
         {
-            var anyPlayers = await _dbContext.PlayerAttributes
-                .Where(l => l.Date <= _defaultGameTime)
-                .OrderByDescending(l => l.Date)
-                .GroupBy(l => l.Player.Name)
-                .Select(l => new PlayerType(l.FirstOrDefault().Player.Name, l.FirstOrDefault().OverallRating))
-                .Take(500)
-                .ToListAsync();
-
-            var anyPlayersWithOverall = anyPlayers
-                .Where(l => l.OverallRating == overall)
-                .Select(l => l.Name)
-                .Take(_InternalPlayersByOverallMaxNumber)
-                .ToList();
+            var anyPlayersWithOverall = await _playerService.GetPlayerByOverall(overall);
 
             if (anyPlayersWithOverall == null)
             {
@@ -54,13 +35,9 @@ namespace FantasyFun.API.Controllers
         
         [HttpGet]
         [Route("{id}")]
-        public async Task<ActionResult<PlayerType>> GetPlayersByOverall(int id)
+        public async Task<ActionResult<PlayerType>> GetPlayersById(int id)
         {
-            var allPlayers = await _dbContext.Players
-                .Where(l => l.Id == id && l.Players.FirstOrDefault().Date <= _defaultGameTime)
-                .OrderByDescending(l => l.Players.FirstOrDefault().Date)
-                .Select(l => new PlayerType(l.Name, l.Players.FirstOrDefault().OverallRating, l.Players.FirstOrDefault().Date))
-                .FirstOrDefaultAsync();
+            var allPlayers = await _playerService.GetPlayerById(id);
 
             if (allPlayers == null)
             {
@@ -69,7 +46,6 @@ namespace FantasyFun.API.Controllers
 
             return Ok(allPlayers);
         }
-       
     }
 }
 

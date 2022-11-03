@@ -1,4 +1,4 @@
-﻿namespace FantasyFun.API.Models
+﻿namespace FantasyFun.DAL.Models
 {
     public class Player
     {

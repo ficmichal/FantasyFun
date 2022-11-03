@@ -1,4 +1,4 @@
-﻿namespace FantasyFun.API.Settings
+﻿namespace FantasyFun.DAL.Settings
 {
     public class DbSettings
     {
