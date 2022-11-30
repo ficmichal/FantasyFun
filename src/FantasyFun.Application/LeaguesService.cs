@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FantasyFun.Application.ViewModel;
+//using FantasyFun.Application.ViewModel;
 using League = FantasyFun.Application.ViewModel.League;
 
 namespace FantasyFun.Application

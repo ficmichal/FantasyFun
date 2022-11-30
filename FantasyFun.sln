@@ -11,7 +11,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FantasyFun.API", "src\Fanta
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FantasyFun.Application", "src\FantasyFun.Application\FantasyFun.Application.csproj", "{052D41B5-003B-4A3A-9BE2-94F934C84E51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FantasyFun.DAL", "src\FantasyFun.DAL\FantasyFun.DAL.csproj", "{83E97501-34F6-4594-9ACD-41B4F069FCAB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FantasyFun.DAL", "src\FantasyFun.DAL\FantasyFun.DAL.csproj", "{83E97501-34F6-4594-9ACD-41B4F069FCAB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit", "Unit", "{7EC23415-9688-4BD8-95F8-A5E74AB438ED}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FantasyFun.Application.UnitTests", "tests\unit\FantasyFun.Application.UnitTests\FantasyFun.Application.UnitTests.csproj", "{CE18570B-01A4-4258-9D3F-04202783D74B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{052D41B5-003B-4A3A-9BE2-94F934C84E51} = {052D41B5-003B-4A3A-9BE2-94F934C84E51}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +38,10 @@ Global
 		{83E97501-34F6-4594-9ACD-41B4F069FCAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83E97501-34F6-4594-9ACD-41B4F069FCAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83E97501-34F6-4594-9ACD-41B4F069FCAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE18570B-01A4-4258-9D3F-04202783D74B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE18570B-01A4-4258-9D3F-04202783D74B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE18570B-01A4-4258-9D3F-04202783D74B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE18570B-01A4-4258-9D3F-04202783D74B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +50,8 @@ Global
 		{8A49B9F8-01E7-46CF-BFA8-32477F844B8B} = {5A2AE9F7-231F-4089-9DE2-C2B2327C77B3}
 		{052D41B5-003B-4A3A-9BE2-94F934C84E51} = {5A2AE9F7-231F-4089-9DE2-C2B2327C77B3}
 		{83E97501-34F6-4594-9ACD-41B4F069FCAB} = {5A2AE9F7-231F-4089-9DE2-C2B2327C77B3}
+		{7EC23415-9688-4BD8-95F8-A5E74AB438ED} = {03FC932D-8741-4370-989D-DFA17FDAD54E}
+		{CE18570B-01A4-4258-9D3F-04202783D74B} = {7EC23415-9688-4BD8-95F8-A5E74AB438ED}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FD00D1A0-44C3-4081-9C4A-4437DE56D333}
