@@ -1,10 +1,6 @@
 ﻿using FantasyFun.API.ViewModel;
 using FantasyFun.Application;
-using FantasyFun.DAL;
-using FantasyFun.DAL.Settings;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
 namespace FantasyFun.API.Controllers
 {

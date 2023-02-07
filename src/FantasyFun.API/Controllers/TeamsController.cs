@@ -1,7 +1,6 @@
 ﻿using FantasyFun.API.ViewModel;
 using FantasyFun.Application;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 namespace FantasyFun.API.Controllers
 {
     [Route("api/[controller]")]

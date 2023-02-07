@@ -1,5 +1,4 @@
 using FantasyFun.Application;
-using FantasyFun.DAL;
 using FantasyFun.DAL.Repositories;
 using FantasyFun.DAL.Settings;
 
