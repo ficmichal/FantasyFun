@@ -6,14 +6,16 @@ namespace FantasyFun.DataMigrator.DbContexts
 {
     public class FootballDbContext : DbContext
     {
+        public readonly string ConnectionString;
 
         public FootballDbContext()
         {
+            var folder = Directory.GetCurrentDirectory();
+            ConnectionString = Path.Combine(folder, "..", "..", "..", "..", "..", "data\\database.sqlite");
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlite($"Data Source = C:\\Users\\mikol\\source\\repos\\C#\\FantasyFun\\data\\database.sqlite");
-        
+            => options.UseSqlite($"Data Source={ConnectionString}");
         public virtual DbSet<League> Leagues { get; set; }
         public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<Team> Teams { get; set; } 
