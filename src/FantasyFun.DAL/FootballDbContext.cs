@@ -95,7 +95,7 @@ namespace FantasyFun.DAL
                 entity.Property(e => e.OverallRating).HasColumnName("overall_rating");
 
                 entity.HasOne(d => d.Player)
-                      .WithMany(p => p.Players)
+                      .WithMany(p => p.PlayerAttributes)
                       .HasForeignKey(d => d.ApiId)
                       .HasPrincipalKey(p => p.ApiId);
             });

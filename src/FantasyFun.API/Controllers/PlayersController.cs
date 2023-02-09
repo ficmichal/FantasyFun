@@ -1,4 +1,5 @@
-﻿using FantasyFun.API.ViewModel;
+﻿using FantasyFun.API.Requests;
+using FantasyFun.API.ViewModel;
 using FantasyFun.Application;
 using Microsoft.AspNetCore.Mvc;
 
@@ -41,6 +42,19 @@ namespace FantasyFun.API.Controllers
             }
 
             return Ok(allPlayers);
+        }
+        
+        [HttpPost]
+        public async Task<ActionResult<long>> SearchPlayers(SearchPlayer searchPlayerRequest)
+        {
+            var playerOverall = await _playerService.Search(new Application.ViewModel.SearchPlayer(searchPlayerRequest.Name, searchPlayerRequest.Overall));
+
+            if (playerOverall == 0)
+            {
+                return NotFound(string.Empty);
+            }
+
+            return Ok(playerOverall);
         }
     }
 }

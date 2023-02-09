@@ -4,7 +4,7 @@
     {
         Player()
         {
-            Players = new HashSet<Player_Attribute>();
+            PlayerAttributes = new HashSet<Player_Attribute>();
         }
 
         public int Id { get; set; }
@@ -13,6 +13,6 @@
         public int FifaApiId { get; set; }
         public  DateTime Birthday { get; set; }
 
-        public virtual ICollection<Player_Attribute> Players { get; set; }
+        public virtual ICollection<Player_Attribute> PlayerAttributes { get; set; }
     }
 }

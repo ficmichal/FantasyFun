@@ -31,5 +31,10 @@ namespace FantasyFun.Application
             var allPlayers = await _playerRepository.GetPlayerById(id);
             return new PlayerType(allPlayers.Name, allPlayers.OverallRating);
         }
+
+        public async Task<long> Search(SearchPlayer search)
+        {
+            return await _playerRepository.SearchPlayerBy(search.Name);
+        }
     }
 }
