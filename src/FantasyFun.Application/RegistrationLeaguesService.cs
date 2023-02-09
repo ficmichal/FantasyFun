@@ -1,4 +1,5 @@
-﻿using FantasyFun.Application.ViewModel;
+﻿using FantasyFun.Application.Services;
+using FantasyFun.Application.ViewModel;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;

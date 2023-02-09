@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using FantasyFun.DAL.Repositories;
 using FantasyFun.Application.ViewModel;
 
-namespace FantasyFun.Application
+namespace FantasyFun.Application.Services
 {
     internal class PlayerService : IPlayerService
     {
@@ -25,7 +25,7 @@ namespace FantasyFun.Application
 
             return anyPlayersWithOverall;
         }
-        
+
         public async Task<PlayerType> GetPlayerById(int id)
         {
             var allPlayers = await _playerRepository.GetPlayerById(id);

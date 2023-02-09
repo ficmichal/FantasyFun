@@ -1,5 +1,5 @@
 ﻿using FantasyFun.API.ViewModel;
-using FantasyFun.Application;
+using FantasyFun.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 namespace FantasyFun.API.Controllers
 {

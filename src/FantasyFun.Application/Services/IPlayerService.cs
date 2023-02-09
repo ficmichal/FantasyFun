@@ -1,6 +1,6 @@
 ﻿using FantasyFun.Application.ViewModel;
 
-namespace FantasyFun.Application
+namespace FantasyFun.Application.Services
 {
     public interface IPlayerService
     {

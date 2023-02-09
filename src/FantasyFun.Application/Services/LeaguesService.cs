@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using FantasyFun.Application.ViewModel;
 using League = FantasyFun.Application.ViewModel.League;
 
-namespace FantasyFun.Application
+namespace FantasyFun.Application.Services
 {
     internal class LeaguesService : ILeaguesService
     {
@@ -21,7 +21,7 @@ namespace FantasyFun.Application
 
         public async Task<League> GetAnyLeague()
         {
-            var anyLeague = await  _leaguesRepo.GetAnyLeague();
+            var anyLeague = await _leaguesRepo.GetAnyLeague();
             return new League(anyLeague.Id, anyLeague.Name);
         }
 
